@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0px;padding:0px;}
+        
+        ol, ul, li{list-style:none;}
+        
+        main{
+            padding-top:48px;
+        }
+        
+        #visual{
+            width:289px;
+            margin: 0px auto;
+            position:relative;
+        }
+        
+        .slide{
+        width:1196px;
+        display:flex;
+        }
+        
+        .slide > li{
+        width:289px;
+        }
+        
+        i.fas{
+        position:absolute;
+        top: 46%;
+        font-size:15px;
+        padding:10px;
+        background-color: rgba(0,0,0,.7);
+        cursor:pointer;
+        color: #fff;
+        }
+        
+        .fa-angle-left{left:0px;}
+        .fa-angle-right{right:0px;}
+    </style>
+    <!-- 폰트 어썸(아이콘 사용) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- 제이쿼리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <!-- 제이쿼리 시작 -->
+    <script>
+        $(document).ready(function(){
+
+            // 1. li태그 중 맨 마지막을 맨 앞으로 옮기기
+            $('.slide li:last-child').insertBefore('.slide li:first-child');
+            
+            // 2. 2번째가 가운데 보이도록 슬라이드 전체를 -289px만큼 움직이기
+            $('.slide').css('margin-left','-289px');
+
+            // 3. 좌측으로 -289px이 적용되는 함수 만들기
+            function move_left(){
+                $('.slide').animate({'margin-left':'-578px'},500,function(){
+                $('.slide li:first-child').insertAfter('.slide li:last-child');
+                $('.slide').css('margin-left','-289px');
+                });
+            }
+
+            // 4. move_right 구현 (move_left의 반대)
+            function move_right(){
+                $('.slide').animate({'margin-left':'0px'},500,function(){
+                $('.slide li:last-child').insertBefore('.slide li:first-child');
+                $('.slide').css('margin-left','-289px');
+                });
+            }
+
+            // 5. 함수 호출 (3초마다)
+            let Timer = setInterval(move_left,3000);
+
+            // 6. 좌, 우 버튼 누를 시 각 함수 작동하게 구현
+            const btn_1 = $('i.fa-angle-left'), btn_2 = $('i.fa-angle-right');
+            btn_1.click(function(){
+                move_left();
+            })
+            btn_2.click(function(){
+                move_right();
+            })
+
+            // 7. 좌 우 버튼에 커서를 올릴 시 타이머 제거되도록 구현
+            $('i.fas').hover(function(){
+                clearInterval(Timer);
+            },function(){
+                Timer=setInterval(move_left,3000)
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <main>
+        <section id="visual">
+            <ul class="slide">
+                <li><a href="#"><img src="./img/banner_delivery.png" alt=""></a></li>
+                <li><a href="#"><img src="./img/banner_delivery_bm.png" alt=""></a></li>
+                <li><a href="#"><img src="./img/banner_delivery_kakao.png" alt=""></a></li>
+                <li><a href="#"><img src="./img/banner_delivery_ygy.png" alt=""></a></li>
+            </ul>
+            <i class="fas fa-angle-left"></i>
+            <i class="fas fa-angle-right"></i>
+        </section>
+    </main>
+</body>
+</html>
