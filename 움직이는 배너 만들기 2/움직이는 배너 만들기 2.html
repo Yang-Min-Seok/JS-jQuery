@@ -42,23 +42,23 @@
         .fa-angle-left{left:0px;}
         .fa-angle-right{right:0px;}
     </style>
-    <!-- 폰트 어썸(아이콘 사용) -->
+    <!-- Font-awesome for adopting icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- 제이쿼리 -->
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     
-    <!-- 제이쿼리 시작 -->
+    <!-- Starting jQuery -->
     <script>
         $(document).ready(function(){
 
-            // 1. li태그 중 맨 마지막을 맨 앞으로 옮기기
+            // 1. take li:last-child to first
             $('.slide li:last-child').insertBefore('.slide li:first-child');
             
-            // 2. 2번째가 가운데 보이도록 슬라이드 전체를 -289px만큼 움직이기
+            // 2. move whole slide -289px to align 2nd child to center
             $('.slide').css('margin-left','-289px');
 
-            // 3. 좌측으로 -289px이 적용되는 함수 만들기
+            // 3. make function 'move_left'
             function move_left(){
                 $('.slide').animate({'margin-left':'-578px'},500,function(){
                 $('.slide li:first-child').insertAfter('.slide li:last-child');
@@ -66,7 +66,7 @@
                 });
             }
 
-            // 4. move_right 구현 (move_left의 반대)
+            // 4. make function 'move_right' (opposite to 'move_left')
             function move_right(){
                 $('.slide').animate({'margin-left':'0px'},500,function(){
                 $('.slide li:last-child').insertBefore('.slide li:first-child');
@@ -74,10 +74,10 @@
                 });
             }
 
-            // 5. 함수 호출 (3초마다)
+            // 5. call 'move_left' every 3 sec
             let Timer = setInterval(move_left,3000);
 
-            // 6. 좌, 우 버튼 누를 시 각 함수 작동하게 구현
+            // 6. implement buttons which activate function move_left, move_right 
             const btn_1 = $('i.fa-angle-left'), btn_2 = $('i.fa-angle-right');
             btn_1.click(function(){
                 move_left();
@@ -87,6 +87,7 @@
             })
 
             // 7. 좌 우 버튼에 커서를 올릴 시 타이머 제거되도록 구현
+            // 7. clear Timer when cursor approches button left, right
             $('i.fas').hover(function(){
                 clearInterval(Timer);
             },function(){
