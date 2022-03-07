@@ -7,3 +7,7 @@ from Jan 25 2022
 <h3>2. Auto-Moving banner 2</h3>
 <br>
 <img width="319" alt="화면_캡처_2022-02-26_194729" src="https://user-images.githubusercontent.com/83502596/156970430-0b9a4f2a-c472-4d92-9c74-6ee804dcb0f8.png">
+
+<h3>3. progress_bar</h3>
+<br>
+<img width="499" alt="화면 캡처 2022-03-07 145718" src="https://user-images.githubusercontent.com/83502596/156976370-44477077-54ba-4d7d-9c1f-5417f0fcc2e4.png">
