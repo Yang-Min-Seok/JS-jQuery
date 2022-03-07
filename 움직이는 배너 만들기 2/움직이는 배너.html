@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0303과제</title>
+    <style>
+        *{margin:0px;padding:0px;}
+        
+        ol, ul, li{list-style:none;}
+        
+        main{
+            padding-top:48px;
+        }
+        
+        #visual{
+            width:250px;
+            margin: 0px auto;
+            position:relative;
+            overflow: hidden;
+        }
+        
+        .slide{
+        width:1000px;
+        display:flex;
+        }
+        
+        .slide > li{
+        width:250px;
+        }
+
+        i.fas{
+            position:absolute;
+            padding:5px;
+            cursor:pointer;
+            color:#fff;
+            top:80.5%;
+            z-index:1;
+        }
+        
+        i.fa-circle-pause{
+            right: 0px;
+            padding:7px;
+        }
+        i.fa-circle-play{
+            right:20px;
+            padding:7px;
+        }
+        
+        .c_btn_bot{
+        width:100%; /* 이걸 써줘야 text-align 먹음*/
+        position: absolute;
+        bottom:0px;
+        text-align: center;
+        }
+
+        .c_btn_bot > li{
+        width:13px;
+        height:13px;
+        display:inline-block;
+        background:#fff;
+        border:1.5px solid #333;
+        border-radius: 50%;
+        list-style: none;
+        cursor:pointer;
+        transition:0.3s;
+        }
+
+        .on{
+        width:40px !important;
+        border-radius:10px !important;
+        background: #333 !important;
+        }
+
+    </style>
+    <!-- 폰트 어썸(아이콘 사용) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- 제이쿼리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <!-- 제이쿼리 시작 -->
+    <script>
+        $(document).ready(function(){
+
+            // 1. li태그 중 맨 마지막을 맨 앞으로 옮기기
+            $('.slide li:last-child').insertBefore('.slide li:first-child');
+            // 2. 2번째가 가운데 보이도록 슬라이드 전체를 -250px만큼 움직이기
+            $('.slide').css('margin-left','-250px');
+            // 3. 우측으로 움직이는 함수
+            function move_right(){
+                $('.slide').animate({'margin-left':'0px'},500,function(){
+                    $('.slide > li:last-child').insertBefore('.slide > li:first-child');
+                    $('.slide').css('margin-left','-250px');
+                    $('.c_btn_bot li:last-child').insertBefore('.c_btn_bot li:first-child').addClass('on'-1);
+                });
+            };
+            // 4. 함수 호출 (3초마다)
+            let Timer = setInterval(move_right,3000);
+
+            // 5. 재생, 일시정지 버튼 기능 구현
+            $('.fa-circle-pause').click(function(){
+                clearInterval(Timer);
+            });
+            $('.fa-circle-play').click(function(){
+                Timer = setInterval(move_right,3000);
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <main>
+        <section id="visual">
+            <ul class="slide">
+                <li><a href="#"><img src="./img/emp-policy-slide2.png" alt=""></a></li>
+                <li><a href="#"><img src="./img/emp-policy-slide3.png" alt=""></a></li>
+                <li><a href="#"><img src="./img/emp-policy-slide4.png" alt=""></a></li>
+                <li><a href="#"><img src="./img/emp-policy-slide5.png" alt=""></a></li>
+            </ul>
+            <ul class="c_btn">
+                <li><i class="fas fa-circle-play"></i></li>
+                <li><i class="fas fa-circle-pause"></i></li>
+            </ul>
+            <ul class="c_btn_bot">
+                <li class="on">&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
