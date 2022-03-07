@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress bar</title>
+    
+    <!-- adopting jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <style>
+        /* common */
+        li{
+            list-style: none;
+        }
+
+        /* progress_bar */
+        .wrap{
+            width:600px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .wrap h2:after{
+            content:"";
+            display:block;
+            border-bottom:1px solid #dedede;
+            padding-top:20px;
+        }
+        .progress ul{
+            padding-left:0;
+        }
+        .progress .bar_box{
+            display:fles;
+            justify-content: space-between;
+            font-weight:bold;
+        }
+        .progress .bar{
+            position:relative;
+            height:20px;
+            border:1px solid #dedede;
+            border-radius:20px;
+        }
+        .progress .bar_ht, .progress .bar_css, .progress .bar_js{
+            position:absolute;
+            width:0;
+            height:20px;
+            background: #000;
+            border-radius: 20px;
+        }
+
+        /* btn */
+        .btn_box{
+            margin-top:50px;
+        }
+        .btn{
+            position:relative;
+            width:100px;
+            padding:5px 5px;
+            margin-right:5px;
+            font-weight: bold;
+            border:0;
+            border-radius:20px;
+            cursor:pointer;
+        }
+        .btn:hover{
+            background: #000;
+            color:#fff;
+            transition:all 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h2>ProgressBar</h2>
+         <!-- progress bar -->
+        <div class="progress">
+            <ul>
+                <li>
+                    <div class="bar_box" id="skill_ht">
+                        <p>HTML</p>
+                        <p>80%</p>
+                    </div>
+                    <div class="bar">
+                        <div class="bar_ht"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bar_box" id="skill_css">
+                        <p>CSS</p>
+                        <p>50%</p>
+                    </div>
+                    <div class="bar">
+                        <div class="bar_css"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bar_box" id="skill_js">
+                        <p>JS</p>
+                        <p>20%</p>
+                    </div>
+                    <div class="bar">
+                        <div class="bar_js"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- btn -->
+        <div class="btn_box">
+            <input type="button"value="HTML"class="btn"id="btn01">
+            <input type="button"value="CSS"class="btn"id="btn02">
+            <input type="button"value="JS"class="btn"id="btn03">
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script>
+        $(document).ready(function(){
+            $('#btn01').click(function(){
+                $('.bar_ht').animate({'width':'80%'},500,'linear');
+            });
+            $('#btn02').click(function(){
+                $('.bar_css').animate({'width':'50%'},500,'linear');
+            });
+            $('#btn03').click(function(){
+                $('.bar_js').animate({'width':'20%'},500,'linear');
+            });
+        })
+    </script>
+    
+</body>
+</html>
