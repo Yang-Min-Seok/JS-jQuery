@@ -1,5 +1,5 @@
-<h1>JS-jQuery-study</h2>
-2022.1.25-3.10
+<h1>JS-jQuery-study</h1>
+from 2022.1.25 to 3.10
 
 <h3>1. Auto-Moving banner</h3>
 <br>
