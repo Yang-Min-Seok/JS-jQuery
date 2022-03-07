@@ -1,6 +1,5 @@
 <h1>JS-jQuery-study</h1>
-from 2022.1.25 to 3.10
-
+from Jan 25 2022
 <h3>1. Auto-Moving banner</h3>
 <br>
 <img width="224" alt="화면_캡처_2022-03-04_124124" src="https://user-images.githubusercontent.com/83502596/156970292-5fb092a2-8023-421e-89a2-1abd85f1e01d.png">
