@@ -11,3 +11,8 @@ from Jan 25 2022
 <h3>3. progress_bar</h3>
 <br>
 <img width="499" alt="화면 캡처 2022-03-07 145718" src="https://user-images.githubusercontent.com/83502596/156976370-44477077-54ba-4d7d-9c1f-5417f0fcc2e4.png">
+
+<h3>3. progress_bar</h3>
+<br>
+<img width="274" alt="화면 캡처 2022-03-09 231356" src="https://user-images.githubusercontent.com/83502596/157458887-4d826cac-e962-483a-a244-2af1c61a38c4.png">
+<img width="273" alt="화면 캡처 2022-03-09 231409" src="https://user-images.githubusercontent.com/83502596/157458889-4fb41c89-74f6-4cdf-a099-bffe1fd3f021.png">
