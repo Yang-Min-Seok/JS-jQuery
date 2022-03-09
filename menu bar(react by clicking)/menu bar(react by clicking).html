@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menu bar</title>
+    <style>
+        .menu{
+            border-radius: 15px 15px 0px 0px;
+            background-color: #fff;
+            display:block; /* automatically change textline */
+            width:1024px;
+            height:48px;
+            text-align:left;
+        }
+        .menu ol{
+            margin-left: -40px;
+            background: #0e0c0c;
+            color:#fff;
+            border-radius: 15px 15px 0px 0px;
+            font-weight: bold;
+            padding:10px;
+            padding-left:30px;
+            font-size:16px;
+            cursor:pointer;
+        }
+        .menu li{
+            list-style:none;
+            font-size:17px;
+            margin-left:-41px;
+            margin-top:1px;
+            background: #eee;
+            border:1px solid #000;
+            padding-left: 32px;
+            padding-top: 10px;
+            height:40px;
+        }
+        .coffee_con{
+            display:none;
+        }
+        .teavana_con{
+            display:none;
+        }
+        .fizzio_con{
+            display:none;
+        }
+    </style>
+    <!-- adopt jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- jQuery -->
+    <script>
+        $(document).ready(function(){
+            
+            // use 'slideToggle' to show / hide contents
+            $('.coffee').click(function(){
+                $('.coffee_con').slideToggle();
+            })
+            $('.teavana').click(function(){
+                $('.teavana_con').slideToggle();
+            })
+            $('.fizzio').click(function(){
+                $('.fizzio_con').slideToggle();
+            })
+            
+        })
+    </script>
+</head>
+<body>
+    <!-- menu bar -->
+    <ul class="menu">
+        <!-- first menu -->
+        <ol class="coffee">coffee</ol>
+        <li class="coffee_con">Caffe Americano, Caffe Latte, Caffe Mocha</li>
+        <br>
+
+        <!-- second menu -->
+        <ol class="teavana">Teavana</ol>
+        <li class="teavana_con">Lime Passion Tea, Chai Tea Latte, Mint Blend Tea</li>
+        <br>
+
+        <!-- third menu -->
+        <ol class="fizzio">Fizzio</ol>
+        <li class="fizzio_con">pink Grapefruit, Cool Lime, Black Tea Lemonade</li>
+
+    </ul>
+</body>
+</html>
