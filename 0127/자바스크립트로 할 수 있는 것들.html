@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02자바스크립트로 할 수 있는것들</title>
+    <style>
+        #p01{
+            background-color:yellow;
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <h2 >02 자바스크립트로 할 수 있는것들</h2>
+    
+    <p>1. 이미지를 삽입하여 버튼을 클릭하면 이미지의  src속성값을 변경하여 다른 이미지가 나오도록 대체하기</p>
+
+    <img src="./img/pic_bulboff.gif" alt="" id="bulb">
+    <input type="button" value="전구켜기" onclick="document.getElementById('bulb').src='./img/pic_bulbon.gif'">
+    <input type="button" value="전구끄기" onclick="document.getElementById('bulb').src='./img/pic_bulboff.gif'">
+
+    <p>2. 버튼을 클릭시 해당 요소를 선택하여 글자의 크기를 변경하기</p>
+
+    <span id = "p01">건강보험공단, 산업인력공단 등 사이트에서 사용하는 글자확대, 축소하기</span>
+    <br>
+    <input type="button" value="글자확대(36px)"onclick="document.getElementById('p01').style.fontSize='36px'">
+    <input type="button" value="글자축소(16px)"onclick="document.getElementById('p01').style.fontSize='16px'">
+
+    <p>3. 웹페이지의 하단(푸터)영역에 select, option 태그요소를 활용하여 family site이동하기</p>
+
+    <select onChange="siteUrl(this)">
+        <option value="">Family SITE</option>
+        <option value="http://www.naver.com">네이버</option>
+        <option value="http://www.daum.net">다음</option>
+        <option value="http://www.google.co.kr">구글</option>
+    </select>
+
+    <script>
+        function siteUrl(a){
+        // alert(a);
+        if(a.value!='none'){ // 만약에 사용자가 선택 목록을 선택하였을때만 아래 내용을 실행하게 한다.
+            window.open(a.value,'_self'); // 해당 url주소에 사이트로 연결된다.
+            a.value="none"; // 다시 초기화를 한다.
+        }
+        else{ // 사용자가 값이 없는 항목을 선택하면
+        return; // 실행하지 않는다.
+        }
+    }
+    </script>
+    <p>4. 모바일 웹(앱)화면에서 버튼을 활용한 이벤트 구현하기</p>
+    <section id="car_event">
+        <img src="./img/car_01.jpg" alt="" id="car_header">
+        <div id="btn_back">
+            <img src="./img/light_off.png" alt="전원끄기" onclick="imgOff();">
+            <img src="./img/light_on.png" alt="전원켜기" onclick="imgOn();">
+        </div>
+        <img src="./img/car_03.jpg" alt="" id='car_footer'>
+    </section>
+    <script>
+        // 전원 끄기를 누르면 아래 함수가 실행된다.
+        function imgOff(){
+            // alert('전원끄기');
+            document.getElementById('car_header').src='./img/car01_01.jpg';
+            document.getElementById('car_footer').src='./img/car01_03.jpg';
+            document.getElementById('btn_back').style.backgroundImage='url(./img/btn_back.jpg)';
+
+        }
+
+        // 전원 켜기를 누르면 아래 함수가 실행된다.
+        function imgOn(){
+            // alert('전원켜기');
+            document.getElementById('car_header').src='./img/car_01.jpg';
+            document.getElementById('car_footer').src='./img/car_03.jpg';
+            document.getElementById('btn_back').style.backgroundImage='none';
+        }
+    </script>
+</body>
+</html>

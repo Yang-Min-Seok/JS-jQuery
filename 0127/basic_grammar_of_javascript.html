@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 기초문법</title>
+    
+    <style>
+        .p01{
+            color:red;
+            background-color: yellow;
+        }
+        footer{
+            background-color: #333333;
+            color: white;
+            text-align:center;
+        }
+        footer > address{
+            line-height:50px;
+            font-style:normal;
+        }
+    </style>
+    <script>
+        // 1. 내부스크립트 방식으로 내용 출력하기
+        document.write('<p class="p01">내부 자바스크립트로 내용 출력하기</p>');
+    </script>
+</head>
+<body>
+    <h2 >자바스크립트 기초문법 p.33</h2>
+    <p>1. 자바스크립트 언어는 html문서 안에서 삽입되어 동작이 된다. (인터프리터 언어)</p>
+    <p>2. 문서의 머리말 영역인 'head'요소안에서 작성되며, 필요에 따라서 'body'요소 안에서도 작성이 가능하다.</p>
+    <p>3. 자바스크립트에서 주석은 css주석과 같으며 2 가지 방법으로 사용할 수 있다. 1줄 주석은 '//주석내용', 2줄 이상의 주석인 '/* 주석내용 */'으로 작성한다. vs코드에서는 단축키 'ctrl + /'</p>
+    <p>4. html, css언어는 대, 소문자를 구별안하지만, 자바스크립트, 제이쿼리는 대, 소문자를 구별하기 때문에 작성시 주의해야 한다.</p>
+    <p>5. 자바스크립트에서는 여러 데이터 형식이 존재하는데 그 중에서 '문자데이터'를 표시할 때 '',"" 구분기호를 사용해야 한다.</p>
+    <p>6. css처럼 현재 무서안에서 작성할 수도 있으며, 별도의 .js문서를 작성하여 html문서에 연결해서 작성 할 수도 있다.(내부, 외부스크립트라고 함.)</p>
+    <p>7. 내부스크립트 작성시 script, /script로 선언하고 종료한다.</p>
+    
+<!-- 2. 외부스크립트 연결하기 -->
+    <script src = "./script/script.js"></script>
+</body>
+</html>
