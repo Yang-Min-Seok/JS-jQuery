@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_자바스크립트 연산자의 종류</title>
+    <script>
+        //1. 산술연산자 사용하기
+        let a=10, b=5; //입력하기
+
+        //연산하기
+        let res = a+b; // 15
+
+        //출력하기
+        document.write(res + '<br>');
+
+        //2. %(나머지구하기)
+        res = a%b;
+
+        //출력하기
+        document.write(res+'<br>');
+
+        //사용자가 입력한 데이터가 홀수인지 짝수인지 판단하기
+        // let c = Number(prompt('숫자를 입력해 주세요','0')); // 형 변환 (str->num)
+        // res = c%2;
+        // if(res==0){
+        //     document.write('입력하신 숫자는 짝수입니다.<br>');
+        // }
+        // else{
+        //     document.write('입력하신 숫자는 홀수입니다.<br>');
+        // }
+
+        //2. 비교연산자 ==(값이 같다.), ===(값은 물론 데이터 형식도 같다.)
+        res = a > b;
+        document.write(res + '<br>'); //true
+
+        //3. 대입연산자
+        res = a = b;
+        document.write(res + '<br>'); //5
+
+        // a = a+b;
+        res = a+=b;
+        document.write(res+'<br>'); //10
+        
+        //4. 증감연산자 ++, --
+        res = a++; //a의 변수값에 1을 더하라
+        document.write(res+'<br>'); // 11
+
+        // 변수 a앞에 ++ : 먼저 변수값에 1을 더하고 출력
+        // 변수 a뒤에 ++ : 변수값을 할당하고 1을 더함
+
+        //5. 논리 연산자 - &&(AND), ||(OR), !(NOT)
+        // window.alert((1>2)&&(1<2)); // 둘다 만족해야 true
+        // window.alert((1>2)||(1<2)); // 둘중 하나만 만족해도 true
+        
+        //6. 삼항조건연산자
+        // 예) 1>2?맞습니다:틀립니다;
+        // document.write(1>2?'맞습니다 <br>':'틀립니다 <br>');
+
+        //문1. 사용자가 입력한 점수를 사용하여 조건(60점 이상)에 맞으면 '합격', 그렇지 않으면 '불합격'으로 출력하기
+        let num=Number(prompt('점수를 입력해주세요',''));
+        document.write(num>=60?'합격 <br>':'불합격 <br>');
+
+    </script>
+</head>
+<body>
+    <h2>03_자바스크립트 연산자의 종류 p.43</h2>
+    <p>자바스크립트 연산자는 사용자가 조건식을 만들어서 원하는 결과를 출력하고자 할 때 사용하는 기호이다.</p>
+    <ol>
+        <li>산술연산자 +, -, * /, %</li>
+        <li>문자열 결합연산자</li>
+        <li>비교연산자</li>
+        <li>대입연산자</li>
+        <li>증강연산자</li>
+        <li>논리연산자</li>
+        <li>삼항조건연산자 - 조건식?출력내용1:출력내용2;</li>
+        <li>타입연산자 - typeof(데이터의 성격을 알아보기 위함) p.41</li>
+    </ol>
+</body>
+</html>

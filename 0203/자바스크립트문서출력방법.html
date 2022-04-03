@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_자바스크립트 문서출력방법</title>
+    <style>
+        header{
+            height:50px;
+            text-align:center;
+            background-color:beige;
+        }
+        #txt02{
+            color:red;
+            font-size:12px;
+        }
+    </style>
+    <script>
+        //1. document객체를 사용하여 문서내용 출력하기
+        document.write("<header><h1><a href='index.html' title='' >상단로고 </a></h1></header>");
+        
+        //2. window객체를 사용하여 메세지 띄우기
+        window.alert('내용을 확인하세요.'); // 네이버 비밀번호 찾기 등 사용자에게 무엇인가를 전달하고자 할 때 ... 사용
+
+        //3. 브라우저 개발자모드의 콘솔모드에서 확인하기
+        console.log(20220203);
+    </script>
+</head>
+
+<body>
+    <h2>01_자바스크립트 문서출력방법</h2>
+    <p>자바스크립트에서 다양한 방식으로 데이터 출력하기</p>
+    <ul>
+        <li>1. document객체 write메서드를 사용 - document.write('출력할 내용');</li>
+        <li>2. window객체를 사용하여 메세지 띄우기 - window.alert('메세지 내용');</li>
+        <li>3. 브라우저 개발자 모드의 console모드에서 내용 출력하기 - console.log(출력할내용);</li>
+        <li>4. document객체의 innerHTML메서드로 내용 출력하기 - document.getElementById('id명').innerHTML="출력할내용";</li>
+        <!-- 4번째 방법은 html뒤에 적어줘야 함 -->
+    </ul>
+
+    <form name="" method="" action="">
+        <fieldset>
+            <legend>폼양식 그룹지정하기</legend>
+            <p><label for="txt01">아이디 : </label><input type="text" id="txt01"></p>
+            <p id="txt02"></p>
+        </fieldset>
+    </form>
+
+    <script>
+        document.getElementById('txt02').innerHTML="아이디를 입력해주세요."
+    </script>
+</body>
+</html>
