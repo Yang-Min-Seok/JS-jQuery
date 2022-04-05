@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>제어문2_switch문</title>
+	<script>
+		//예제1. 등수별 상품 출력하기
+		// 1등 -> 당첨! 제주도 여행상품권
+		// 2등 -> 냉장고
+		// 3등 -> 상품권
+		// 4등 기타 -> 꽝
+
+		// let num = prompt('등수를 입력하세요','');
+		// switch(num){
+		// 	case '1':document.write('당첨! 제주도 여행상품권'); break;
+		// 	case '2':document.write('당첨! 냉장고'); break;
+		// 	case '3':document.write('당첨! 상품권'); break;
+		// 	default :document.write('꽝'); 
+		// }
+		document.write('<hr>');
+		// 날짜 객체 선언
+		let today = new Date(); // 현재 시스템의 시간
+		
+		document.write('<hr');
+
+		//1. switch case 문을 사용하여 요일 표시하기
+		let month = today.getMonth()+1;
+		let date = today.getDate();
+		let day = today.getDay(); 
+		document.write('<br>'+month+'월'+date+'일');
+		switch(day){
+			case 0 : document.write('(일)');break;
+			case 1 : document.write('(월)');break;
+			case 2 : document.write('(화)');break;
+			case 3 : document.write('(수)');break;
+			case 4 : document.write('(목)');break;
+			case 5 : document.write('(금)');break;
+			default : document.write('토');
+		}
+		
+		document.write('<br>');
+
+		//2. 배열 사용
+		let days = ['일', '월', '화', '수', '목', '금', '토'];
+		document.write(today.getMonth()+1, '월', today.getDate(),'일(',days[today.getDay()],')<br>');
+		
+		document.write('<hr>');
+		
+	</script>
+	</head>
+<body>
+	<!-- <h2>제어문2_switch문(선택문)</h2>
+	<p>선택문은 사용자가 만든 프로그램에서 조건식이 만족하면 결과가 출력이 되며, 그 위치에서 프로그램이 종료된다. 값이 정확하기 일치할 때 멈추게 되는데 이때 'break'문을 사용한다.</p>
+	<pre>
+		switch(조건식){
+			case1 : 실행할 내용;break;
+			case2 : 실행할 내용;break;
+			case3 : 실행할 내용;break;
+			default:실행할 내용;
+		}
+	</pre> -->
+</body>
+</html>

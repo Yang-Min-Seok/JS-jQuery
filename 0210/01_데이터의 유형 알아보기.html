@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_데이터의 유형알아보기</title>
+    <script>
+        
+        //1. 원시형(기본형) 데이터
+        let s = '10'; // 문자데이터
+        let n = 10; // 숫자데이터
+        let b = true; // 부울형 데이터(true, false)
+        let n01; // undefined데이터(값이 선언되지 않음)
+        let n02 = null;
+
+        //3. 참조형 데이터 - 여러개의 데이터를 저장할 수 있다. (배열)
+        let array = [10, 20, 30, 40, 50, 60];
+        let array01 = ['일', '월', '화', '수', '목', '금', '토'];
+        let info = ['홍길동', '23', '종로구 구기동', '그린아트컴퓨터학원', '02-722-1333'];
+
+        //2. 출력하기
+        document.write(s,'<br>'); // 10
+        document.write(typeof(s), '<br>'); // string
+        document.write(n, '<br>'); // 10
+        document.write(typeof(n), '<br>'); //number
+        document.write(b, '<br>'); // true
+        document.write(typeof(b), '<br>'); // boolean
+        document.write(n01, '<br>'); // undefined
+        document.write(typeof(n01), '<br>'); // undefined
+        document.write(n02, '<br>'); // null
+        document.write(typeof(n02), '<br>'); // object
+        document.write(array, '<br>'); // 10,20,30,40,50,60
+        document.write(typeof(array), '<br>'); // object
+        document.write(array01, '<br>'); // 일,월,화,수,목,금,토
+        document.write(typeof(array01), '<br>'); // object
+        document.write(info, '<br>'); // 일,월,화,수,목,금,토
+        document.write(typeof(info), '<br>'); // object
+        document.write(array[0], '<br>'); // 10
+        document.write(array01[4], '<br>'); // 목
+        document.write(info[3], '<br>'); // 그린아트컴퓨터학원
+
+        // typeof -사용자가 입력한 데이터가 어떤 종류의 형식인지를 알려주는 연산자이며, 변수 앞에 Number, String등을 작성하면 실제 데이터 형식을 변환할 수 있다.
+
+        // 문제풀이
+
+        // es5문법
+        document.write('나의 이름은 ', "\'", info[0], "\'", '이고 나이는 ', "\'", info[1],"\'세이며 ", "\'", info[3], "\'", ' 수강생입니다.');
+        
+        // es6문법 -> 문자열 인터폴레이션(포매팅)
+        document.write(`<br>나의 이름은 \'${info[0]}\'이고 나이는 \'${info[1]}\'세이며 \'${info[3]}\' 수강생입니다. `);
+        // 탬플릿 리터럴(`)은 + 연산자를 사용하지 않아도 간단한 방법으로 새로운 문자열을 삽입할 수 있는 기능을 제공한다. 이를 문자열 인터폴레이션(String Interpolation)이라 한다.
+
+    </script>
+</head>
+<body>
+    <h2>01_데이터의 유형알아보기</h2>
+    <p>자바스크립트에서 사용하는 데이터 유형에 대해 알아보기</p>
+    <ul>
+        <li>문자 데이터형(string)</li>
+        <li>숫자 데이터형(number)</li>
+        <li>부울형(boolean) - true, false</li>
+        <li>찾을 수 없는 데이터형(undefined)</li>
+        <li>값이 없는 데이터형(null)</li>
+        <li>배열형 데이터(array)</li>
+        <li>함수형 데이터(function)</li>
+        <li>객체(object)</li>
+    </ul>
+</body>
+</html>
