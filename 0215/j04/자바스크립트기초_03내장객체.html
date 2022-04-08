@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트기초_내장객체 p.87</title>
+  <script>
+    // 날짜 표시하기
+    let today = new Date(); // 날짜 객체 선언
+    document.write(today.getFullYear() + '<br>'); // 년도
+    document.write(today.getDate() + '<br>'); // 일
+    document.write(today.getMonth()+1 + '<br>'); // 월
+    document.write(today.getDay() + '<br>'); // 요일 (요일번호는 0부터 시작)
+  </script>
+  <style>
+    #food{
+      width: 225px;
+      height: 225px;
+      border:3px solid #000;
+      margin:0px auto;
+      position: relative;
+    }
+  </style>
+	</head>
+<body>
+	<h2>자바스크립트기초_내장객체 p.87</h2>
+		
+	<h3>내장객체의 종류</h3>
+	<ul>
+		<li>브라우저 객체 - window</li>
+		<li>문서객체 - document</li>
+		<li>날짜객체 - Date</li>
+		<li>수학객체 - Math</li>
+		<li>문자열 객체 - String</li>
+		<li>배열 객체 - Array</li>
+		<li>함수 객체 - function</li>
+	</ul>
+	
+	<h3>1. 날짜객체(Date) p.90, 92</h3>
+	<p>Date객체는 현재 또는 특정 날짜와 시간에 대한 정보를 제공해 주는  객체이다.</p>
+	<p>웹페이지의 증권, 은행, 뉴스페이지 등에 오늘의 날짜와 시간을 표시, 게시판</p>
+	<p>작성법) let 변수명 = new Date();</p>
+	
+	<h3>2. 날짜객체를 활용한 요일별 추천요리 표시하기</h3>
+	<p>현재 요일번호를 구하여 배열번호에 맞는 이미지 파일명을 대입하여 이미지를 표시한다.</p>
+  <div id="food"></div>
+  <script>
+    let n = today.getDay(); //2(화)
+    
+    // 배열객체
+    let food = ['food1.jpg','food2.jpg','food3.jpg','food4.jpg','food5.jpg','food6.jpg','food7.jpg'];
+    
+    document.getElementById('food').innerHTML='<p>오늘의 추천 요리는 <img src="./img02/'+ food[n]+'">입니다.</p>';
+  </script>
+  <img src="./img02/food2.jpg">
+</body>
+</html>

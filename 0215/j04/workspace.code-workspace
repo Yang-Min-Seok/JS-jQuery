@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\이소린\\프로젝트\\TRAVEL\\대한항공모바일"
+		},
+		{
+			"path": "..\\..\\..\\이소린\\프로젝트\\10_개발(HTML프로토타입)"
+		},
+		{
+			"path": "..\\.."
+		}
+	],
+  "settings": {
+    "liveServer.settings.port": 5501,
+    "liveServer.settings.multiRootWorkspaceName": "양민석"
+  }
+}

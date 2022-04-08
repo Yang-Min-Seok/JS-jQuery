@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트_내장객체 - 수학객체(math)</title>
+  <script>
+    //수학객체 사용하기
+    let max = Math.max(30,0); // 최댓값 구하기
+    document.write(max+'<br>');
+
+    let min = Math.min(30, 0); // 최솟값 구하기
+    document.write(min+'<br>');
+
+    let ceil = Math.ceil(3.14); // 무조건 올림 4
+    document.write(ceil+'<br>');
+  </script>
+  <style>
+    #banner{
+      width: 700px;
+      height: 400px;
+      border:3px solid #000;
+      margin:0px auto;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+	<h2>자바스크립트_내장객체 - 수학객체(math) p.95</h2>
+	<p>수학객체는 다른 내장객체와는 다르게 new키워드를 사용하지 않는 정적인 객체이다.</p>
+	
+	<h3>메서드의 종류</h3>
+	<ol>
+		<li>max(숫자1, 숫자2, 숫자3.....) : 숫자들중에서 최대값을 반환</li>
+		<li>min(숫자1, 숫자2, 숫자3....) : 숫자들 중에서 최소값을 반환</li>
+		<li>round(숫자) : 소수점 첫째 자리를 반올림</li>
+		<li>ceil(숫자) : 소수점 자리를 무조건 올림</li>
+		<li>floor(숫자) : 소수점 자리를 무조건 절삭</li>
+		<li>abs(숫자) : 수의 절대값을 반환</li>
+		<li>random(숫자) : 0과 1사이의 난수를 표시</li>
+	</ol>
+  <div id="banner"></div>
+<script>
+    let n = Math.random()
+      // document.write(n + '<br>');
+    let random = Math.floor(n*8);
+      // document.write(random);
+    
+    let picture_list =['banner01.jpg','banner02.jpg','banner03.jpg','banner04.jpg','banner05.jpg','banner06.jpg','banner07.jpg','banner08.jpg'];
+
+    document.getElementById('banner').innerHTML='<img src="./img01/'+picture_list[random]+'">';
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트 기초_함수(function)</title>
+  <style>
+    .p01{
+      background-color: yellow;
+      color: red;
+    }
+    #b_box{
+      width: 578px;
+      height: 338px;
+      border:3px solid #000;
+      margin:0px auto;
+      position: relative;
+    }
+    #b_box > i.fas{
+      font-size:30px;
+      background-color:rgba(0,0,0,.7);
+      padding: 4px 8px;
+      color: #fff;
+      position: absolute;top:45%;
+    }
+    i.fa-angle-left{
+      left:0px;
+    }
+    i.fa-angle-right{
+      right:0px
+    }
+    /* 현재 페이지수와 전체 페이지수 서식 */
+    #page{
+      color: white;
+      background-color: black;
+      position:absolute;bottom:0px;right:0px;
+      z-index:10;
+    }
+  </style>
+  <script>
+    // //1. 매개변수가 없는 일반 함수
+    // function print01(){
+    //   document.write('<span class="p01">매개변수가 없는 일반함수입니다.</span>', '<br>');
+    // }
+
+    // //2. 함수명을 작성하여 내용 실행하기
+    // print01();
+
+    //3. 매개변수가 있는 함수
+    // function city(a){
+    //   document.write('<span class="p01">'+ a +'</span>');
+    // }
+    
+    // //4. 사용자가 입력한 지역명을 함수변수에 대입하여 출력하기
+    // let region = prompt('사시는 지역명을 입력해주세요','서울');
+    // city(region);
+
+    // Q. 나의 이름은'철수'이고 사는 곳은 '서울'입니다.
+    // const user_name = prompt('이름을 입력해주세요',''), 
+    // user_region = prompt('사는 곳을 입력해 주세요','');
+
+    // function info(name, region) {
+    //   document.write('<span class="p01">나의 이름은 \'',name, '\' 이고, 사는 곳은 \'', region, '\'입니다.</span>');
+    // }
+    // info(user_name, user_region);
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+	<!-- <h2>자바스크립트 기초_함수(function)</h2>
+	<p>함수란? 일련의 내용을 삽입하여 사용자가 언제든 호출하여 내용을 실행할 수 있는 실행문이다.</p>
+	<p>함수명을 사용하면 언제든 재실행할 수 있다.</p>
+	<p>함수는 코드의 중복을 피할 수 있다.</p>
+	<p>함수는 유지보수의 용이성이 높다</p>
+	<p>함수의 종류에는 내장함수(prompt, alert.......)와 사용자 정의 함수가 있다.</p>
+	<pre>
+		함수 작성법 3가지
+		1. 매개변수가 없는 일반 함수
+		function 함수명(){
+			실행할 내용;
+		}
+		
+		2. 매개변수가 있는 함수
+		function 함수명(변수1, 변수2.......){
+			실행할 내용;
+		}
+		
+		3. 리턴값이 있는 함수
+		function 함수명(변수1, 변수2.......){
+			실행할 내용;
+			return 실행결과;
+		} -->
+	</pre>
+  <h3>실습예제 - 함수를 사용하여 배너콘첸츠 구현하기</h3>
+  <dl>
+    <dt>구현 순서</dt>
+    <dd>1. banner 영역을 만들고 이미지 태그요소를 사용하여 첫 번째 이미지(banner01)을 삽입힌다.</dd>
+    <dd>2. 아이콘 폰트를 활용하여 좌, 우 방향버튼을 삽입하여 css로 배치한다.</dd>
+    <dd>3. 자바스크립트에서 nextImg, prevImg 함수를 각각 작성하여 총 이미지의 개수 4장을 초과하지 않도록 조건문(if)을 작성한다.</dd>
+    <dd>4. 좌, 우 방향버튼을 클릭 시 각각 함수병을 호출하여 해당 이미지가 나오도록 한다.</dd>
+    <dd>5. 이미지 변경 시 우측하단에 페이지 번호를 표시한다.</dd>
+  </dl>
+
+  <article id="b_box">
+    <img src="./image/banner01.jpg" alt="" id="banner">
+    <br>
+    <i class="fas fa-angle-left" onclick="prevImg()"></i>
+    <i class="fas fa-angle-right" onclick="nextImg()"></i>
+    <span id="page">1/4</span>
+  </article>
+  <script>
+
+    // 초기값
+    let n = 1;
+    //오른쪽 하단에 페이지 번호 표시하기
+    // document.getElementById('page').innerHTML= n+'/4';
+
+    function nextImg(){
+      if(n==4){
+        n=1;
+      }
+      else{
+        n++;
+      }
+      // 이미지태그에 숫자를 대입하여 이미지 변경하기
+      document.getElementById('banner').src='./image/banner0'+n+'.jpg';
+      document.getElementById('page').innerHTML= n+'/4';
+    }
+    function prevImg(){
+      if(n==1){
+        n=4;
+      }
+      else{
+        n--;
+      }
+      document.getElementById('banner').src='./image/banner0'+n+'.jpg';
+      document.getElementById('page').innerHTML= n+'/4';
+    }
+
+    // 자바스크립트 내장 객체 - 시간 객체 setInterval(함수명, 시간);
+    // nextImg함수를 3초마다 반복호출한다.
+    let Timer = setInterval(nextImg,3000); // 시간은 1/1000초
+    
+  </script>
+
+</body>
+</html>
