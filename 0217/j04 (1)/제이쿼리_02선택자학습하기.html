@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>제이쿼리_01선택자학습하기</title>
+  <style>
+    nav{
+      width: 300px;
+      height: 500px;
+      background-color: #ffff00;
+      position: relative; 
+      display: none;
+    }
+  </style>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.toggle,nav').mouseenter(function(){ // 마우스 오버시 동작
+        $('nav').css('display','block');
+      });
+      $('.toggle,nav').mouseleave(function(){ // 마우스 떼면 동작
+        $('nav').css('display','none');
+      });
+      // 기본선택자 (class, id, tag)
+      $('h2').css('color','#ff0000');
+      $('h3').css('background-color','#ffff00');
+      $('.coffee').css('color','#0000ff');
+      $('#list01').css('border','2px solid #ff0000');
+      $('*').css('font-size','20px');
+      // 부모요소와 자식요소 관계에서 선택한 선택자
+      $('ol > li').css('background-color','#ccc');
+      $('ol > li:eq(3)').css('font-size','30px');
+      $('ol > li:nth-child(3)').css('font-size','40px');
+      // 형제관계에서 선택한 요소의 바로 다음에 오는 요소를 선택하여 서식을 적용한다.
+      $('h2 + p').css('background','#00ff00');
+    });
+  </script>
+</head>
+<body>
+	<h2>제이쿼리_01선택자학습하기(p.176 - p.216)</h2>
+	<p>제이쿼리에서는 css에서 사용하던 선택자를 사용하여 서식을 적용할 수 있는데, 제이쿼리에서는 좀더 세분화 되어 선택할 수 있고, 그 개수도 많다.</p>
+	
+	<h3>제이쿼리 선택자를 사용하여 선택하기</h3>
+
+	<ol id="list01">
+		<li class="coffee">콜드브루</li>
+		<li class="coffee">브루드 커피</li>
+		<li class="coffee">에스프레소</li>
+		<li class="coffee">프라푸치노</li>
+		<li class="coffee">블랜디드</li>
+		<li class="coffee">스타벅스 피지오</li>
+	</ol>
+
+  <a href="#" title="" class="toggle">전체메뉴</a>
+  <nav>
+    카테고리메뉴목록
+  </nav>
+	
+</body>
+</html>
