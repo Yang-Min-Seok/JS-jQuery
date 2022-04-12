@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>제이쿼리_02animate메소드 사용법 익히기(p.294)</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <style>
+    #circle{
+      width:100px;
+      height:100px;
+      border-radius:50%;
+      background: red;
+      position:relative; /* 현재 위치가 기준 */
+    }
+    .box02, .box03, .box04, .box05, .box06{
+      width:50px;
+      height:50px;
+      background: #00ff00;
+      margin-bottom: 10px;
+      position:relative;
+    }
+    
+  </style>
+  <script>
+    $(document).ready(function(){
+      $('#btn01').click(function(){
+        $('#circle').animate({'left':'500px'},1000).animate({'left':'0px'},500);
+      });
+      
+      $('#btn02').click(function(){
+        $('#circle').stop();
+      });
+      
+      $('.box02').hover(function(){
+        $(this).animate({'left':'600px'},500);
+      },function(){
+        $(this).animate({'left':'0px'},500);
+      });
+
+      // .box03을 50픽셀씩 이동하기
+      $('#btn03').click(function(){
+        $('.box03').animate({'left':'+=50px'},300);
+      });
+      $('#btn04').click(function(){
+        $('.box03').animate({'left':'-=50px'},300);
+      });
+
+      
+
+
+
+    });
+  </script>
+
+</head>
+<body>
+	<h2>제이쿼리_02animate메소드 사용법 익히기 (p.294)</h2>
+	<p>제이쿼리에서는 효과(effect)와 애니메이트(animate)메소드를 사용하여 사용자가 선택한 요소를 다양하게 움직이게 구현할 수 있다.</p>
+	
+	<h3>1. animate작성법</h3>
+	<p>$('대상').animate({'속성':'값'},시간, 가속도, 콜백함수);</p>
+	
+	<h3>2. animate메소드를 사용하여 움직이는 원을 구현하기</h3>
+	<div id="circle"></div>
+	
+	<p>play, stop버튼을 클릭하면 위 박스 움직이게 하기, 멈추게 하기</p>
+   <input type="button" value="play();" id="btn01">
+   <input type="button" value="stop();" id="btn02">
+	
+	<h3>3. box02에 마우스 오버시 애니메이션 동작하게 하기</h3>
+<!--div.box02*5-->
+	<div class="box02"></div>
+	<div class="box02"></div>
+	<div class="box02"></div>
+	<div class="box02"></div>
+	<div class="box02"></div>
+	
+	<h3>4. 자바스크립트 증감(++,--)연산자를 사용하여 클릭시 50픽셀씩 이동하기, 감소하기</h3>
+	<div class="box03"></div>
+	
+	<input type="button" id="btn03" value="50픽셀씩 증가하기">
+  <input type="button" id="btn04" value="50픽셀씩 감소하기">
+  
+  <h3>5. 제이쿼리 UI를 사용하여 감속, 가속도 효과(easing)주기</h3>
+  <p>jquery.com사이트의 왼쪽 상단의 ui탭을 클릭하고 왼쪽 easing메뉴에서 jquery.ui 라이브러리를 찾아 연결하여 사용한다.</p>
+  <img src="./img/easing.png" alt="">
+  
+	<div class="box04"></div>
+	<div class="box05"></div>
+	<div class="box06"></div>
+	
+	<input type="button" value="Linear" id="btn05">
+  <input type="button" value="EaseOutQuint" id="btn06">
+  <input type="button" value="EaseOutElastic" id="btn07">
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+	<script>
+    $(document).ready(function(){
+      $('#btn05').click(function(){
+        $('.box04').animate({'left':'600px'},500,'linear').animate({'left':'0px'},500,'easeOutElastic');
+      });
+      $('#btn06').click(function(){
+        $('.box05').animate({'left':'600px'},500,'easeOutQuint').animate({'left':'0px'},500);
+      });
+      $('#btn07').click(function(){
+        $('.box06').animate({'left':'600px'},500,'easeOutElastic').animate({'left':'0px'},500);
+      });
+    });
+  </script>
+</body>
+</html>

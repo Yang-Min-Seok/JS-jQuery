@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>제이쿼리 문서객체(DOM)조작_실습예제3</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
+  <style>
+    *{margin:0px;padding:0px;}
+    ul, li, ol{list-style:none;}
+    a{text-decoration:none; color:#333;}
+    h2, p, dl, dt, dd{padding:10px;}
+    .slide{
+      width:100%;
+      position:relative;
+    }
+    .slide > img{
+      width:100%;
+      position:absolute; /* 이미지 5장이 모두 제자리에 겹쳐진다. 마지막 이미지가 맨위로 올라온다. */
+    }
+    .act{
+      z-index:10; /* 포지션 속성 사용 시 위/아래 겹치는 순서를 배경하는 속성*/
+    }
+    .c_btn{
+      position:absolute;
+      bottom:10px;
+      left:50%;
+      color: white;
+      z-index:20;
+      display:flex; /* 자식요소 li를 가로방향으로 배치한다. */
+    }
+    .c_btn > li:first-child{margin-right:10px;}
+  </style>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // 슬라이드를 감싸는 부모요소의 높이를 자식요소 img 높이와 일치시킨다.
+      $('.slide').height($('.slide img').height());
+      // resize이벤트 - 사용자의 브라우저의 크기가 변하면 동작하는 이벤트
+      $(window).resize(function(){
+        $('.slide').height($('.slide img').height());
+      });
+
+      let n = 0;
+      let iNum = $('.slide img').length; /* 이미지 개수를 조사하여 = 5(총 이미지 개수) */
+      
+      // 움직이는 함수 fadeInOut
+      function fadeInOut(){
+        
+        // 3초 뒤에 현재 보이는 이미지 숨긴다.
+        $('.slide img').stop().fadeOut();
+        if(n==4){
+          n=0;
+        }
+        else{
+          n++;
+        }
+        $('.slide img').eq(n).stop().fadeIn();
+        $('.c_btn li:first-child').html(n+1+'/'+iNum)
+      }
+      
+      // 시간객체를 사용하여 3초마다 함수 호출
+      let Timer = setInterval(fadeInOut,3000);
+
+      // 정지버튼을 누르면 시간함수를 제거하여 멈추게 함 & 플레이 버튼으로 변경 되어야 함.
+      $('.c_btn li:last-child').click(function(){
+        if($(this).find('i').hasClass('fas fa-pause')==true){ // li 태그의 자손 i 태그에 클래스명이 pause가 존재한다면
+          clearInterval(Timer); // 시간을 제거하여 멈춤
+          $(this).find('i').attr('class','fas fa-play'); // 플레이버튼 모양이 나오게 한다.
+        }
+        else{
+          // 플레이버튼을 누르면 다시 시간함수를 생성하여 애니메이션되게 하고 정지버튼 모양으로 변경되게 한다.
+          Timer = setInterval(fadeInOut, 3000); // 시간을 생성하여 다시 움직이게 한다.
+          $(this).find('i').attr('class','fas fa-pause'); // 플레이 버튼 모양을 다시 정지모양으로 변경한다.
+        }
+      })
+    });
+  </script>
+</head>
+<body>
+	<h2>제이쿼리 문서객체(DOM)조작_실습예제3</h2>
+	<p>이미지 5장을 순서대로 겹치게 하여 4초마다 fadeIn, fadeOut효과 주기</p>
+	<dl>
+		<dt>구현순서</dt>
+		<dd>html태그로 이미지 5장을 순서대로 삽입하고, 목록태그를 활용하여 이미지 번호와 일시정지, 플레이버튼 목록을 작성한다.</dd>
+		<dd>css를 활용하여 이미지 5장을 position속성으로 겹치게하고 z-index속성으로 위/아래 순서를 정한다.</dd>
+		<dd>제이쿼리를 사용하여 현재 보이는 이미지 숨기고, 다음 이미지가 보이도록 하며, 해당하는 이미지가 보일때 페이지 번호를 표시한다.</dd>
+		<dd>일시정지 버튼을 클릭시 시간함수를 제거하여 슬라이드가 멈추게 하고, 플레이버튼 클릭시 시간함수를 다시 설정하여 움직이도록 한다.</dd>
+		<dd>window객체의 resize이벤트를 사용하여 화면의 너비가 조정되면 이미지크기와 부모요소크기도 같이 변하게 하여 반응형 슬라이드를 만든다.</dd>
+	</dl>
+	
+	<article class="slide">
+		<img src="./img/01.jpg" alt="" class="act">
+		<img src="./img/02.jpg" alt="">
+		<img src="./img/03.jpg" alt="">
+		<img src="./img/04.jpg" alt="">
+		<img src="./img/05.jpg" alt="">
+		
+		<ul class="c_btn">
+		  <li>1/5</li>
+			<li><i class="fas fa-pause"></i></li>
+		</ul>
+	</article>
+	
+</body>
+</html>
