@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>제이쿼리_문서객체조작(DOM)관련메서드01 p.218</title>
+  <style>
+    .txt01{
+      background-color: #ffff00;
+    }
+    .txt02{
+      background-color: #00ff00;
+    }
+    .status{
+      position:fixed;
+      right:100px;
+      top:100px;
+      background-color: #ffff00;
+      color: #f00;
+    }
+    article{
+      width:534px;
+      height:340px;
+      border:3px solid #000;
+      position:relative;
+    }
+    article img{
+      width:100%;
+    }
+    article nav{
+      position:absolute;
+      right:0px;
+      top:0px;
+      width:200px;
+      height:100%;
+      background-color: rgba(255,255,255,.8);
+    }
+    article ul{
+      list-style:none;
+    }
+    article a{
+      color:#333333;
+      text-decoration:none;
+      font-weight: bold;
+      line-height: 40px;
+      display:block;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      
+      // 1. text()메서드 사용하기
+      $('#btn01').click(function(){
+        $('.txt01').text('text메소드로 내용 변경하기');
+      });
+
+      // 2. html()메소드 사용하기
+      $('#btn02').click(function(){
+        $('.txt02').html('<address>Copyright&copy;2022 000 all rights reserved.</address>');
+      });
+
+      // 사용자가 브라우저 하단으로 내리면 span에 세로스크롤 값 출력하기
+      $(window).scroll(function(){
+        let sPos = $(this).scrollTop(); // 세로 스크롤 값을 변수에 담는다.
+        $('.status').text(sPos); // 스크롤 값을 span 태그에 출력
+      });
+
+      // attr메서드로 메뉴 a태그에 href속성값을 가져와서 배너의 src속성값에 대입하여 이미지 변경하기
+      $('nav a').mouseenter(function(){
+        let url = $(this).attr('href');
+        $('.banner img').css('opacity','0').stop().animate({'opacity':'1'}).attr('src', url);
+      });
+
+
+    });
+  </script>
+</head>
+<body>
+  <span class="status"></span>
+	<h2>제이쿼리_문서객체조작(DOM) 관련메서드01  p.218</h2>
+	<p>문서객체조작이란? DOM(문서객체모델)에서 HTML문서안에서 모든 요소들과 내용들을 제이쿼리를 사용하여 글자를 변경하거나 추가, 삭제, 속성값을 변경할 수 있는 것을 말한다.</p>
+	<p>https://oscarotero.com/jquery/페이지의 API에서 'ATTRIBUTES', 'MANIPULATION' 카테고리에서 메소드 확인가능.</p>
+	<ul>
+		<li>text(); - html요소를 선택하여 내용을 입력하거나 가져오기 위한 메소드</li>
+		<li>html(); - html요소를 선택하여 html태그요소를 추가하거나 가져오기 위한 메소드</li>
+		<li>attr(); - html요소를 선택하여 속성값을 추가하거나 변경하기 위한 메서드</li>
+		<li>val(); - html요소를 선택하여 input요소의 속성값을 추가하거나 변경하기 위한 메서드</li>
+	</ul>
+	
+	<p class="txt01">아래 text(); 버튼을 클릭하면 이곳에 텍스트 내용이 변경됩니다.</p>
+	<p class="txt02">아래 html(); 버튼을 클릭하면 이곳에 html태그요소가 추가되어 변경됩니다.</p>
+	
+	<input type="button" value='text()버튼' id="btn01">
+	<input type="button" value='html()버튼' id="btn02">
+	
+	<h3>attr()메서드를 활용하여 쿠팡 메인 이미지 배너 구현하기</h3>
+	<p>.attr();  - attribute(속성)의 약자로서 사용자가 선택한 html요소의 속성을 선택하여 값을 가져오거나 변경하고자 할 때 사용한다.
+	<br>
+	 작성법) .attr('속성','값');   또는 .attr('속성');
+	</p>
+	
+	<article>
+		<div class="banner">
+			<img src="./img/01.jpg" alt="">
+		</div>
+		<nav>
+			<ul>
+				<li><a href="./img/01.jpg" title="">광고이미지01</a></li>
+				<li><a href="./img/02.jpg" title="">광고이미지02</a></li>
+				<li><a href="./img/03.jpg" title="">광고이미지03</a></li>
+				<li><a href="./img/04.jpg" title="">광고이미지04</a></li>
+			</ul>
+		</nav>
+	</article>
+	<script>
+
+  </script>
+	
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>제이쿼리_문서객체조작메서드를 활용한 채팅창 구현하기</title>
+  <style>
+    *{
+      margin:0px; 
+      padding:0px;
+    }
+    #wrap{
+      width:400px;
+      margin:0px auto;
+      padding:20px;
+    }
+    /* 채팅창 서식 - 상대방과 사용자가 입력한 텍스트를 보여주기 위한 서식 */
+    .chatbox{
+      height:400px;
+      background-color: #d7e4f2;
+      padding:10px;
+      position:relative;
+      /* 세로방향의 스크롤바만 표시하기 위함 */
+      overflow-y:scroll;
+    }
+    /* 말풍선 서식 */
+    .chatbox > div{
+      margin:5px 0px; max-width:300px;
+      font-size:14px;
+      display:inline-block;
+      position:realtive;
+    }
+
+    /* 상대방 말풍선 */
+    .bubble01{
+      background:#fff;
+      border-radius:14px 14px 14px 0px;
+      padding:7px 15px 7px 15px;
+      float:left;
+      clear:both;
+    }
+
+    /* 내 말풍선 */
+    .bubble02{
+      background:#ff0;
+      border-radius:14px 14px 0px 14px;
+      padding: 7px 15px 7px 15px;
+      float:right;
+      clear:both;
+      color:#333;
+    }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#send').click(function(){ // 사용자가 전송버튼을 클릭하면
+        let talk = $('textarea').val(); // 사용자가 입력한 내용을 변수에 저장
+        if(talk==''){ // 만약 text박스에 내용이 없다면
+        // 전송버튼을 누르지 못하게 한다.
+          $('#send').attr('disabled', false)
+        }else{// 그렇지 않다면
+        // 채팅박스의 내용을 출력한다.
+        $('textarea').val(''); // 기존 내용은 지우고
+        $('.chatbox').append('<div class="bubble02">'+ talk + '</div>'); //채팅글 뒤에 내용을 출력한다.
+        }
+      })
+    });
+  </script>
+</head>
+<body>
+	<h2>제이쿼리_문서객체조작메서드를 활용한 채팅창 구현하기</h2>
+	<p>속성메서드 val, attr, addClass를 사용하여 입력양식에 들어간 내용 출력하기</p>
+  
+  <div id="wrap">
+<!-- 버튼 3개, 상대방 캐릭터 사진과 이름 -->
+    <header>
+<!--      input[type=button class=btn0$ id=]*3 -->
+      <input type="button" class="btn" id="close">
+      <input type="button" class="btn" id="minbtn">
+      <input type="button" class="btn" id="maxbtn">
+      <img src="./img/tube.jpg" alt="튜브">
+      <span>공부가 싫어</span>
+    </header>
+    
+<!--    대화 표시창 - 글 출력부분 -->
+    <section class="chatbox">
+      <div class="bubble01">잘지내?</div>
+      <div class="bubble01">뭐해? 겅부해?</div>
+    </section>
+    
+<!--    대화 입력창 영역 - 글입력하는 부분 -->
+    <footer class="txt_box">
+      <textarea placeholder="대화내용이 들어갑니다."></textarea>
+      <input type="button" value="전송" id="send">
+    </footer>
+  </div>
+</body>
+</html>
