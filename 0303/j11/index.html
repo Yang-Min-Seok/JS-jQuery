@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>베스킨라빈스_상단 헤더구현</title>
+	<style>
+		*{margin:0px;padding:0px;}
+		ol, ul, li{list-style:none;}
+		a{
+			text-decoration:none;
+			color:#333333;
+		}
+		body{
+			font-family:"맑은 고딕",arial, sans-serif;
+			font-size:12px;
+			color:#333;
+		}
+		
+		header{
+			width:100%;
+			border-top:3px solid #ff7c98;
+			background-image:url('./img/bg_header.gif');
+		}
+		#header_top, #header_bottom{
+			width:1200px;
+			margin:0px auto 0px auto;
+		}
+		#header_top > h1{
+			text-align:center;
+			padding:15px 0px;
+		}
+		
+		#header_bottom{
+			width:100%;height:46px;
+			border-top:1px solid #ccc;
+			border-bottom:1px solid #333;
+			background-color:#fff;
+			overflow:hidden; /* 해당영역을 벗어난 콘텐츠 숨기기 */
+		}
+		#header_bottom > nav{
+			width:1200px;
+			margin:0px auto;
+			display:flex;
+			justify-content: space-between;
+		}
+		.lnb a, .gnb a{text-transform:uppercase;}
+		.lnb{
+			width:200px;
+			display:flex;
+		}
+		.lnb > li{line-height:46px;padding-left:30px;}
+		.lnb > li > a{
+			font-size:14px;
+			font-weight:bold;
+		}
+		.lnb > li:first-child a{color:#ff7c98;}
+		
+		.gnb{
+			width:1000px;
+			display:flex;
+			justify-content:space-around;
+		}
+		.gnb > li{
+/*			padding:0px 32px;*/
+			line-height:46px;
+			text-align:center;
+			position:relative;
+		}
+		.gnb > li > a{
+			font-size:15px;
+			font-weight:bold;color:#3c0a0a;
+		}
+		.sub li:hover a{
+			color:#ff7c98;
+		}
+		
+		#header_bottom::after{
+			display:block;
+			content:"";
+			width:100%;
+			height:1px;
+			background-color:#333;
+			position:absolute;
+			top:178px;
+			transition:0.5s;
+			opacity: 0;
+		}
+		#header_bottom:hover::after{
+			opacity:1;
+		}
+		
+	</style>
+	
+<!--	제이쿼리 라이브러리 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		
+		//사용법 - .animate({'속성':'값'},시간, 속도, 콜백함수);
+		
+		$(document).ready(function(){
+			
+			$('.gnb').hover(function(){ //메인메뉴에 마우스 오버시 아래 내용실행
+				//메뉴가 아래로 펼쳐진다. header_bottom
+				$('#header_bottom').stop().animate({'height':'320px'},500);
+				//$('.sub').fadeIn(); //서브메뉴 숨기고 서서히 나타나게 한다.
+				$('.sub').stop().animate({'opacity':'1'},500);
+				
+			},function(){ //마우스 아웃하면
+				//메뉴가 위로 접힌다. header_bottom
+				$('#header_bottom').stop().animate({'height':'46px'},500);
+//				$('.sub').fadeOut(); //서서히 사라지게 한다.
+				$('.sub').stop().animate({'opacity':'0'},500);
+			});
+			
+//			$('.gnb').mouseenter(function(){
+//				
+//			});
+//			
+//			$('.gnb').mouseleave(function(){
+//				
+//			});
+			
+			
+			
+		});	
+	</script>
+	
+	
+	
+	
+</head>
+<body>
+<!--	상단헤더영역 -->
+<header>
+	<div id="header_top">
+		<h1>
+			<a href="index.html" title="메인페이지로 바로가기">
+				<img src="./img/logo_baskinrobbins.png" alt="">
+			</a>
+		</h1>
+	</div>
+	
+	<div id="header_bottom">
+		<nav>
+			<ul class='lnb'>
+				<li><a href="#" title="로그인">login</a></li>
+				<li><a href="#" title="회원가입">join</a></li>
+			</ul>
+			
+			<ul class='gnb'>
+				<li><a href="#" title="">flavor of the month</a>
+					<ul class="sub">
+						<li><a href="#" title=""><img src="./img/img_monthly_fom.png" alt=""></a></li>
+					</ul>
+				</li>
+				
+				<li><a href="#" title="">menu</a>
+					<ul class="sub">
+							<li><a href="#" title="">아이스크림</a></li>
+							<li><a href="#" title="">아이크림케이크</a></li>
+							<li><a href="#" title="">음료</a></li>
+							<li><a href="#" title="">커피</a></li>
+							<li><a href="#" title="">디저트</a></li>
+	     			</ul>
+				</li>
+				
+				<li><a href="#" title="">영양 성분 및 알레르기</a></li>
+				<li><a href="#" title="">event</a>
+				 	<ul class="sub">
+						<li><a href="#" title="">진행중인 이벤트</a></li>
+						<li><a href="#" title="">당첨자발표</a></li>
+					 </ul>
+				</li>
+				
+				<li><a href="#" title="">store</a>
+					<ul class="sub">
+						 <li><a href="#" title="">매장찾기</a></li>
+						 <li><a href="#" title="">고객센터</a></li>
+           </ul>
+				</li>
+				
+				<li><a href="#" title="">about</a>
+					<ul class="sub">
+						<li><a href="#" title="">공지사항</a></li>
+						<li><a href="#" title="">보도자료</a></li>
+						<li><a href="#" title="">채용정보</a></li>
+						<li><a href="#" title="">점포설개문의</a></li>
+						<li><a href="#" title="">contact us</a></li>
+           </ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+
+
+
+</body>
+</html>

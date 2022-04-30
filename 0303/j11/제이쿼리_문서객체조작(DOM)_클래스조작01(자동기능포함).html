@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>제이쿼리 문서객체조작_클래스조작 p.218</title>
+  <style>
+    #box01{
+      border:3px solid #000;
+      background-color: #ffff00;
+      height:200px;
+      width:500px;
+    }
+    /* 사용자가 필요로 할 때 적용하기 위한 서식 */
+    .act{
+      background-color: #00ff00 !important; /* 우선순위 부여 !important */
+      color: #f00;
+    }
+    #job *{margin:0px; padding:0px;
+    }
+    #job{
+      overflow: hidden;
+      width:250px;
+      height:240px;
+      border:2px solid #000;
+      position:relative; /* 부모요소를 기준으로 설정 */
+    }
+    #job > h3{
+      font-size:16px;
+      line-height:50px;
+      text-align: center;
+    }
+    #img_box{
+      position:relative;
+      width:500px;
+      display:flex; /* 자식 요소 가로배치 */
+    }
+    #img_box img{
+      width:250px;
+      height:153px;
+      
+    }
+    /* 콘트롤 버튼 서식 */
+    .c_btn{
+      width:100%; /* 이걸 써줘야 text-align 먹음*/
+      position: absolute;
+      bottom:0px;
+      text-align: center;
+    }
+
+    .c_btn > li{
+      width:13px;
+      height:13px;
+      display:inline-block;
+      background:#fff;
+      border:1.5px solid #333;
+      border-radius: 50%;
+      list-style: none;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .on{
+      width:40px !important;
+      border-radius:10px !important;
+      background: #333 !important;
+    }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      
+      // 1. addCalss 적용하기
+      $('#btn01').click(function(){
+        $('#box01').addClass('act');
+      });
+    
+      // 2. removeClass 적용하기
+      $('#btn02').click(function(){
+        $('#box01').removeClass('act');
+      });
+
+      // 3. toggleClass 적용하기
+      $('#btn03').click(function(){
+        $('#box01').toggleClass('act');
+      });
+      
+      // 5. hasClass 실행하기
+      $('#btn05').click(function(){
+        if($('#box01').hasClass('act')==true){
+          alert('class act exists');
+        }else{
+          alert('class act doesn\'t exist');
+        }
+      });
+
+    });
+  </script>
+</head>
+<body>
+	<h2>제이쿼리 문서객체조작_클래스조작</h2>
+	<p>제이쿼리에서는 css스타일 서식을 작성하여 클래스 선택자를 사용. 사용자가 원하는 요소에 미리 작성한 스타일 서식을 적용할 수 도 있고, 또는 적용된 클래스 서식을 제거할 수도 있다.</p>
+	<h3>1. 문서객체 조작 - 클래스(.class)</h3>
+	<ul>
+		<li>addClass(); - 선택한 요소에 클래스 서식을 추가한다.</li>
+		<li>removeClass(); - 선택한 요소에 클래스 서식을 제거한다.</li>
+		<li>toggleClass(); - 선택한 요소에 클래스 서식을 추가하거나 제거한다.</li>
+		<li>css(); - 사용자가 선택한 요소에 스타일 서식을 적용한다.</li>
+		<li>hasClass(); - 선택한 요소에 해당 클래스 이름이 있는지 여부를 판단하여 true, false값으로 표시</li>
+	</ul>
+	
+	<p>사용 예)</p>
+	<div id="box01">
+		클래스 서식 조작하기 - 사용자가 아래의 버튼들을 클릭하면 이곳에 적용된 클래스 서식이 적용되거나 삭제 됩니다.		
+	</div>	
+<!--	input[type=button  value= id=btn0$]*5 -->
+	<input type="button" value="addClass실행하기" id="btn01">
+	<input type="button" value="removeClass실행하기" id="btn02">
+	<input type="button" value="toggleClass실행하기" id="btn03">
+	<input type="button" value="css()메서드 실행하기" id="btn04">
+	<input type="button" value="hasClass실행하기" id="btn05">
+	
+	<h3>2. 클래스 조작 메서드를 활용한 콘트롤 버튼 구현하기</h3>
+	<p>이미지 2장을 삽입하여 가로방향으로 배치를 한뒤, 첫번째 이미지만 보이도록 한다.</p>
+	<p>이미지 아래 ul, li태그로 목록을 작성하여 둥근 모양의 서식이 나오도록 하고 가로방향 배치한다. </p>
+	<p>.on 클래스 서식을 작성하여 첫번째 목록에 서식을 적용하고 사용자가 목록버튼을 클릭시 .on클래스가 적용되고 그외 나머지는 서식이 제거되도록 한다.</p>
+	
+	<div id="job">
+		<h3>그림으로 보는 취업 동향</h3>
+		<div id="img_box">
+			<img src="./img/getImage1.png" alt="">
+			<img src="./img/getImage2.png" alt="">
+		</div>
+		<ul class="c_btn">
+			<li class="on">&nbsp;</li>
+			<li>&nbsp;</li>
+		</ul>
+	</div>
+	
+  <script>
+    $(document).ready(function(){
+      
+      //1. 배너 이미지의 가로크기값을 구하여 변수에 담는다.
+      let iWidth = $('#img_box img').width(); 
+      console.log(iWidth);
+      
+      function total_move(){
+      //2. 컨트롤 버튼 클릭 시 각각 인덱스 값에 이미지 너비를 곱하여 거리 구하기
+      $('.c_btn > li').click(function(){
+        let n = $(this).index();
+
+        let dist = -(iWidth * n); // 수식을 만들어서 0, -250이 나오도록 한다.
+
+        // 기존에 적용된 on 서식을 제거하고,
+        $('.c_btn li').removeClass('on');
+
+        // 선택한 컨트롤 버튼에만 on 서식을 적용한다.
+        $(this).addClass('on');
+
+        // 이미지를 이동시킨다.
+        $('#img_box').animate({'left':dist},200);
+      });
+      };
+
+      let Timer = setInterval(total_move,3000);
+    
+    });
+  </script>
+	
+</body>
+</html>
